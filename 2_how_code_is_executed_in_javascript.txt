@@ -1,0 +1,10 @@
+How Code is Executed in JavaScript
+
+1. The execution context executes code in two phases a) memory creation phase, b) code execution phase
+2. In Memory Creation Phase, JavaScrip will allocate memory to all the variables and functions.
+3. Variables are stored as undefined and for functions the whole function definition is stored inside Memory
+4. In Code Execution phase all the variables will be allocated the value assigned to them in the code
+5. During Code Execution if a function is invoked a new execution context is created for that function
+6. Once code is executed the execution context will be deleted
+7. JavaScript has a call stack which handles all the execution context. whenever a new execution context is created it is pushed to the call stack
+8. Call Stack manages the order of execution of all execution contexts
