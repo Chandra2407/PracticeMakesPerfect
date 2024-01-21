@@ -8,3 +8,5 @@ How Code is Executed in JavaScript
 6. Once code is executed the execution context will be deleted
 7. JavaScript has a call stack which handles all the execution context. whenever a new execution context is created it is pushed to the call stack
 8. Call Stack manages the order of execution of all execution contexts
+
+study material : https://www.freecodecamp.org/news/execution-context-how-javascript-works-behind-the-scenes/
