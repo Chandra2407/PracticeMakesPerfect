@@ -1,0 +1,9 @@
+Populating the page: how browsers work
+
+
+
+reference link - https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work
+critical rendering path - https://developer.mozilla.org/en-US/docs/Web/Performance/Critical_rendering_path
+DOM creation - https://web.dev/articles/critical-rendering-path/constructing-the-object-model#document-object-model-dom
+CSS Optimization - https://developer.mozilla.org/en-US/docs/Learn/Performance/CSS
+CSS triggers - https://csstriggers.com/
