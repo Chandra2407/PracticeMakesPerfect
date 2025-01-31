@@ -1,0 +1,20 @@
+object and arrray time complexity
+
+Object - 
+insert O(1)
+remove O(1)
+access O(1)
+search O(n)
+Object.keys O(n)
+Object.values O(n)
+Object.entries O(n)
+
+Array - 
+insert at end O(1)
+remove from end O(1)
+access O(1)
+insert at start O(n)
+remove from start O(n)
+search O(n)
+push/pop O(1)
+shift/unshift/slice/splice/concat/forEach/map/reduce/filter O(n)

@@ -120,9 +120,9 @@ function selectionSort(arr) {
         }
 
         [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]]
-        console.log(min, minIndex, JSON.stringify(arr));
+        // console.log(min, minIndex, JSON.stringify(arr));
     }
-    console.log(JSON.stringify(arr))
+    // console.log(JSON.stringify(arr))
 }
 
 // selectionSort([2,4,3,5,1,9,7,5])
@@ -641,9 +641,24 @@ function findUnion(arr1, arr2, n, m) {
     return union;
 }
 
-// console.log(findUnion([1, 2, 3, 4, 5], [1, 2, 3, 6, 7, 8], 5, 6))
+function doUnion(a, n, b, m) {
+    const set = new Set();
 
-var missingNumber = function(nums) {
+    for (let num of a) {
+        set.add(num);
+    }
+    for (let num of b) {
+        set.add(num);
+    }
+
+    return set.size;
+
+}
+
+// console.log(findUnion([1, 2, 3, 4, 5], [1, 2, 3, 6, 7, 8], 5, 6))
+// console.log(doUnion([85, 25, 1, 32, 54, 6],6,[85,2],2))
+
+var missingNumber = function (nums) {
     // let n = nums.length
     // let hash = new Array(n+1).fill(0)
     // for(let i =0;i<n;i++){
@@ -657,25 +672,25 @@ var missingNumber = function(nums) {
     // return -1
     let n = nums.length
     let sum1 = (n * (n + 1)) / 2
-    let sum2 = nums.reduce((acc,curr) => acc + curr)
+    let sum2 = nums.reduce((acc, curr) => acc + curr)
     console.log(sum1 - sum2)
     return sum1 - sum2
 };
 
 // missingNumber([3,0,1])
 
-var findMaxConsecutiveOnes = function(nums) {
+var findMaxConsecutiveOnes = function (nums) {
     let max = 0;
-    let count =0;
-    for(let i =0;i<nums.length;i++){
-        if(nums[i] == 1){
+    let count = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] == 1) {
             count++
         }
-        else{
+        else {
             count = 0;
             continue
         }
-        max = Math.max(count,max)
+        max = Math.max(count, max)
     }
     console.log(max)
     return max
@@ -683,15 +698,126 @@ var findMaxConsecutiveOnes = function(nums) {
 
 // findMaxConsecutiveOnes([1,1,1,0,1,1])
 
-function reverseArray(arr){
+function reverseArray(arr) {
     let left = 0
-    let right = arr.length -1
-    while(left<=right){
-        [arr[left],arr[right]] = [arr[right],arr[left]]
+    let right = arr.length - 1
+    while (left <= right) {
+        [arr[left], arr[right]] = [arr[right], arr[left]]
         left++
         right--
     }
     return arr
 }
 
-console.log(reverseArray([1,2,3,4]))
+// console.log(reverseArray([1,2,3,4]))
+
+function findSum(A, N) {
+    //code here
+    let min = A[0]
+    let max = A[0]
+    for (let i = 1; i < A.length; i++) {
+        if (A[i] < min) {
+            min = A[i]
+            console.log(min, "min")
+        }
+        if (A[i] > max) {
+            max = A[i]
+            console.log(max, "max")
+        }
+    }
+    return max + min
+}
+
+// console.log(findSum([-2, 1, -4, 5, 3],4))
+
+function sort012(arr, N) {
+    let low = 0;
+    let high = arr.length - 1
+    let mid = 0
+    while (mid <= high) {
+        if (arr[mid] == 0) {
+            [arr[mid], arr[low]] = [arr[low], arr[mid]]
+            low++
+            mid++
+        }
+        else if (arr[mid] == 2) {
+            [arr[high], arr[mid]] = [arr[mid], arr[high]]
+            high--
+        }
+        else {
+            mid++
+        }
+    }
+    return arr
+}
+
+// console.log(sort012([0,2,1,2,0]))
+
+function kthSmallest(arr, l, r, k) {
+    arr = arr.sort((a, b) => a - b)
+    return arr[k - 1]
+}
+
+//   console.log(kthSmallest([1, 2, 6, 4, 5, 3],0,5,4))
+
+function rotateArray(arr) {
+    let end = arr[arr.length - 1]
+    for (let i = arr.length - 1; i > 0; i--) {
+        arr[i] = arr[i - 1]
+    }
+    arr[0] = end
+    return arr
+}
+
+// rotateArray([1,2,3,4,5])
+
+//todo later
+function getMinDiff(arr, n, k) {
+    //your code here
+}
+
+
+var rearrangeArray = function (nums) {
+    let stack = new Array(nums.length)
+    let i = 0
+    let neg = 1
+    let pos = 0
+    while (i < nums.length) {
+        if (nums[i] > 0 ) {
+            stack[pos] = nums[i]
+            pos+=2
+        }
+        else if (nums[i] < 0) {
+            stack[neg] = nums[i]
+            neg+=2
+        }
+        i++
+    }
+    return stack
+};
+
+// rearrangeArray([3, 1, -2, -5, 2, -4])
+
+function commonElements(arr1, arr2, arr3, n1, n2,n3){
+    let minLength = Math.min(arr1.length,arr2.length,arr3.length)
+    let minArr = []
+    let ans = new Set()
+    if(minLength == n1) {
+        minArr = [...arr1]
+    }
+    else if(minLength == n2) {
+        minArr = [...arr2]
+    }
+    else if(minLength == n3){
+        minArr = [...arr3]
+    }
+    for(let i =0;i<minLength;i++){
+        if(arr1.includes(minArr[i]) && arr2.includes(minArr[i]) && arr3.includes(minArr[i])){
+            ans.add(minArr[i])
+        }
+    }
+    console.log(Array.from(ans))
+    return Array.from(ans)
+}
+
+commonElements([1, 5, 10, 20, 40, 80],[6, 7, 20, 80, 100],[3, 4, 15, 20, 30, 70, 80, 120],6,5,8)
