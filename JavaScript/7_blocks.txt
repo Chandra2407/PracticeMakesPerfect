@@ -1,0 +1,57 @@
+1. Code inside curly bracket is called block.
+2. Multiple statements are grouped inside a block so it can be written where JS expects single statements like in if, else, loop, function etc.
+3. Block values are stored inside separate memory than global. They are stored in block. (the reason let and const are called block scope)
+4. Shadowing of variables using var, let and const.
+5. The shadow should not cross the scope of original otherwise it will give error.
+6. shadowing let with var is illegal shadowing and gives error.
+7. var value is stored in nearest outer function or global scope and hence can be accessed outside block as well whereas same is not the case with let and const.
+
+
+
+**function inside a block**
+
+In non-strict mode, function declarations inside blocks are hoisted to the top of the enclosing function or global scope.
+In strict mode and ES6+, function declarations inside blocks are block-scoped and not hoisted outside the block.
+Best practice is to avoid function declarations inside blocks and use function expressions instead.
+
+
+
+**Block-Level Functions in ES6:**
+
+In ES6, function declarations inside blocks are block-scoped, similar to let and const.
+They are not hoisted to the top of the enclosing function or global scope (unlike in pre-ES6 non-strict mode).
+They are only accessible within the block they are defined in.
+
+if (true) {
+    function foo() { console.log("foo"); }
+    foo(); // Works
+}
+foo(); // ReferenceError: foo is not defined
+
+
+**Strict Mode vs. Non-Strict Mode:**
+
+In strict mode, block-level functions are truly block-scoped, and attempting to access them outside the block results in a ReferenceError.
+
+In non-strict mode, the behavior is inconsistent across browsers. Some browsers hoist block-level functions to the top of the enclosing function or global scope, while others treat them as block-scoped.
+
+
+
+**Hoisting Behavior:**
+
+In ES6, block-level functions are hoisted to the top of the block, not the enclosing function or global scope.
+
+This means they are only accessible after the declaration within the block.
+
+
+**Differences from let and var:**
+
+Block-level functions are similar to let in that they are block-scoped.
+
+Unlike var, they do not leak outside the block or get hoisted to the top of the function/global scope.
+
+**Best Practices:**
+
+Avoid using function declarations inside blocks to prevent confusion and cross-browser inconsistencies.
+
+Use function expressions with let or const instead for block-scoped functions.

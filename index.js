@@ -1,6 +1,18 @@
-let a;
+"use strict";
+{
+    var a;
+    let b;
+    const c = 1;
+}
 
-console.log(a)
-a = 10
-let b;
-
+if(true){
+    var a;
+    let b;
+    const c = 1;
+    foo()
+    function foo(){
+        console.log("foo1");
+    }
+    let d
+}
+foo()
