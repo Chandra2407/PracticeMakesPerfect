@@ -1,0 +1,66 @@
+Closure :Function bundled with its lexical environment is known as a closure. Whenever function is returned, even if its vanished in execution context but still it remembers the reference it was pointing to. Its not just that function alone it returns but the entire closure and that's where it becomes interesting
+
+It allows a function to "remember" the environment in which it was created, even after that environment has gone out of scope.
+
+Usage of closure - 
+module design pattern
+currying
+functions like once
+memoization
+maintaining state in async environment
+settimeouts
+iterators
+
+Why Are Closures Useful?
+Data Encapsulation: Closures allow you to create private variables that are only accessible to the inner function.
+
+Function Factories: You can create functions dynamically with specific behavior based on the outer function's parameters.
+
+Callbacks and Event Handlers: Closures are often used in asynchronous programming to maintain state across asynchronous operations.
+
+common Pitfalls with Closures
+Memory Leaks: Since closures retain references to their outer environment, they can lead to memory leaks if not managed properly.
+
+Unexpected Behavior: If the outer function's variables change before the closure is executed, it might lead to unexpected results.
+
+Summary
+A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope.
+
+Closures are powerful for encapsulation, function factories, and maintaining state in asynchronous code.
+
+Be mindful of memory usage and variable behavior when working with closures.
+
+
+examples of memory leaks
+
+1. Event Listeners Retaining DOM Elements
+Leak:
+
+javascript
+
+function setupLeak() {
+  const element = document.getElementById('leakyButton');
+  element.addEventListener('click', () => {
+    console.log('Element ID:', element.id); // Closure retains reference to `element`
+  });
+}
+
+// Later, if `leakyButton` is removed from the DOM:
+document.body.removeChild(document.getElementById('leakyButton'));
+Why it leaks: The event listener closure retains a reference to element, preventing it from being garbage-collected even after removal from the DOM.
+
+Fix:
+
+javascript
+
+function setupSafe() {
+  const element = document.getElementById('safeButton');
+  const onClick = () => console.log('Clicked:', element.id);
+
+  element.addEventListener('click', onClick);
+  
+  // Remove the listener when no longer needed:
+  element.addEventListener('remove', () => {
+    element.removeEventListener('click', onClick);
+  });
+}
